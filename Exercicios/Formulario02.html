@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestão Acadêmica</title>
+</head>
+<body>
+    <form action="/action_page.html">
+        <fieldset>
+            <legend><strong>Sistema de Gestão Acadêmica</strong></legend>
+
+            <p>
+                Login:<br>
+                <input type="text" name="pnome">
+            </p>
+
+            <p>
+                Senha:<br>
+                <input type="text" name="snome">
+            </p>
+
+            <p>
+                <strong>Status:</strong><br>
+                <select name="status">
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                </select>
+            </p>
+
+            <p>
+                <strong>Tipo:</strong><br>
+                <input type="radio" id="tecnico" name="tipo" value="tecnico">
+                <label for="tecnico">Técnico</label>
+                
+                <input type="radio" id="professor" name="tipo" value="professor">
+                <label for="ptofessor">Professor</label>
+                
+                <input type="radio" id="aluno" name="tipo" value="aluno">
+                <label for="aluno">Aluno</label>
+            </p>
+            <p>
+                <label for="data_criacao"><strong>Data Criação:</strong><br></label>
+                <input type="date" id="data_criacao" name="data_criacao">
+            </p>
+
+            <p>
+                <strong>Perfil:</strong><br>
+                <input type="radio" id="convidado" name="tipo" value="convidado">
+                <label for="convidado">Convidado</label>
+                
+                <input type="radio" id="administrador" name="tipo" value="administrador">
+                <label for="administrador">Administrador</label>
+            </p>
+
+            <p>
+                <strong>Observações:</strong><br>
+                <textarea id="exemplo01" name="exemplo01" rows="4" cols="50">Deixe um comentário.</textarea>
+            </p>
+
+            <p>
+                <strong>Módulos:</strong><br>
+                <input type="checkbox" id="compras" name="pref" value="compras">
+                <label for="compras">Compras</label>
+                
+                <input type="checkbox" id="documentação" name="pref" value="documentação">
+                <label for="documentação">Documentação</label>
+                
+                <input type="checkbox" id="biblioteca" name="pref" value="biblioteca">
+                <label for="biblioteca">Biblioteca</label><br>
+
+                <input type="checkbox" id="academico" name="pref" value="academico">
+                <label for="academico">Acadêmico</label>
+
+                <input type="checkbox" id="recursosh" name="pref" value="recursosh">
+                <label for="recursosh">Recursos Humanos</label>
+
+            </p>
+
+            <input type="submit" value="Salvar">
+            <input type="button" value="Excluir">
+
+        </fieldset>
+    </form>
+
+</body>
+</html>
