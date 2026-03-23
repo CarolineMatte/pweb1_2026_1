@@ -10,11 +10,31 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
     crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/menu.js"></script>
   </head>
   <body>
     <!--Menu de Navegação-->
+    <div id="menu-lateral" class="menu-lateral">
+
+        <ul class="menu-itens">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#historia">História</a></li>
+            <li><a href="#personagem">Personagem</a></li>
+            <li><a href="#curiosidades">Curiosidades</a></li>
+            <li><a href="#poderes">Poderes</a></li>
+        </ul>
+    </div>
     <nav class="navbar navbar-dark bg-primary fixed-top">
         <div class="container">
+            <button class="btn-menu" onclick="showMenu()">
+                <img 
+                id="img-menu"
+                src="img/icon-hamburger-menu.png" 
+                width="28" 
+                height="28"
+                alt="menu"
+                />
+            </button>
             <a class="navbar-brand mx-auto" href="#">
                 <img src="img/icone_tela_principal.png" 
                 width="40"
@@ -106,7 +126,7 @@
     </section>
 
     <!--Curiosidade-->
-        <section id="historia" class="py-5">
+        <section id="curiosidades" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -120,10 +140,13 @@
 
                     <h2 class="text-primary">Curiosidades</h2>
                     <p>
-                         O nome é uma homenagem ao advogado Virgil Darnell Hawkins <br>
-                         Foi inspirado no Homem-Aranha da Marvel<br>
-                         Já integrou a Liga da Justiça em episódio especial<br>
-                         Usa habilidades de skate para se locomover com seus poderes
+                        <ul>
+                            <li>O nome é uma homenagem ao advogado Virgil Darnell Hawkins</li>
+                            <li>Foi inspirado no Homem-Aranha da Marvel</li>
+                            <li>Já integrou a Liga da Justiça em episódio especial</li>
+                            <li>Usa habilidades de skate para se locomover com seus poderes</li>
+                        </ul>
+                        
                     </p>
                     <p class="text-muted">
                         <small>Fonte: Legião dos Heróis</small>
@@ -134,25 +157,35 @@
     </section>
 
     <!--Super Poderes-->
-        <section id="personagem" class="bg-dark text-white py-5">
+        <section id="poderes" class="bg-dark text-white py-5">
         <div class="container">
             <div class="row">
                 <div class="col-6">
                     <h2 class="text-primary">Super Poderes</h2>
-                    <p>
-                       Os poderes se baseiam na eletricidade e eletromagnetismo:<br>
+                    <p>Os poderes se baseiam na eletricidade e eletromagnetismo:</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                        <li>Eletromagnetismo</li>
+                        <li>Campos magnéticos</li>
+                        <li>Controle elétrico</li>
+                        <li>Levitação de metais</li>
+                        <li>Ondas de rádio</li>
+                       </ul>
 
-                        Eletromagnetismo <br>
-                        Campos magnéticos<br>
-                        Controle elétrico<br>
-                        Levitação de metais<br>
-                        Ondas de rádio<br>
-                        Raios elétricos<br>
-                        Bolas de energia<br>
-                        Magnetização<br>
-                        Energia pura<br>
-                        Intelecto genial
-                    </p>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                        <li>Raios elétricos</li>
+                        <li>Bolas de energia</li>
+                        <li>Magnetização</li>
+                        <li>Energia pura</li>
+                        <li>Intelecto genial</li>
+                       </ul>
+
+                        </div>
+                    </div>
+                   
                      <p class="text-muted">
                         <small class="text-white">Fonte: NerdBox</small>
                     </p>
@@ -169,6 +202,14 @@
         </div>
     </section>
 </main>
+<footer class="bg.primary text-white text-center px-3">
+    <div class="container">
+        <p class="mb-0">
+            Projeto Desenvolvimento Web 1 - Site Super Choque &copy; 2026
+        </p>
+    </div>
+
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
