@@ -13,19 +13,19 @@ header {
 
 .nav-link {
     font-weight: 600;
-    color: #ffffff !important; /* Alterado para branco para dar contraste com o fundo escuro */
+    color: #ffffff !important; 
     transition: 0.3s;
 }
 
 .nav-link:hover, .nav-link.active {
-    color: #f0ad4e !important; /* Cor de destaque para o menu */
+    color: #f0ad4e !important; 
 }
 
 /* Ajuste do Carousel (SlideShow) */
 .carousel-item img {
     object-fit: cover;
-    height: 450px; /* Altura fixa para manter o padrão visual */
-    filter: brightness(0.8); /* Escurece um pouco para o texto aparecer melhor */
+    height: 450px; 
+    filter: brightness(0.8);
 }
 
 /* Cards de Destinos */
@@ -46,7 +46,7 @@ header {
 
 /* Footer (Rodapé) */
 footer {
-    background-color: #0A2A5E !important; /* Fundo alterado para azul royal/marinho */
+    background-color: #0A2A5E !important; 
 }
 
 footer a {
