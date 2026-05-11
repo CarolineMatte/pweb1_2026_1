@@ -37,7 +37,7 @@ class db {
     {
         
         $campos = "";
-        $marcador = "";
+        $marcadores = "";
         $vetorData = [];
         $sep = "";
 
