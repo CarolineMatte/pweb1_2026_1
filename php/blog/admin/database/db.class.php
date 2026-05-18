@@ -32,6 +32,16 @@ class db {
             die('Erro na conexão: ' . $e->getMessage());
         }
     }
+
+
+    public function all(){
+        $sql = " SELECT * FROM $this->table_name";
+        $st = $this->conn->prepare($sql);
+        $st->execute();
+
+        return $st->fetchAll(PDO::FETCH_CLASS);
+    }
+    
     //INSERT INTO tabela('campo1', 'campo2') VALUES(?,?);
     public function store($dados)
     {
@@ -57,7 +67,7 @@ class db {
         $st = $this->conn->prepare($sql);
         $st -> execute($vetorData);
         }catch(PDOException $e) {
-            var_dump("Erro ao inserir", $e->getMessage());
+            throw new Exception("Erro ao inserir", $e->getMessage());
        }
     }
 }
