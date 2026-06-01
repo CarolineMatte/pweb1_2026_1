@@ -7,9 +7,8 @@ include './header.php';
     <a href="./aulas/aula03_formulario.php" class="btn btn-primary">Formulário Aluno</a>
 
 </div>
+
+
 <?php
 include './footer.php';
 ?>
-   
-    
-
