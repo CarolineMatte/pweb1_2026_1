@@ -1,19 +1,18 @@
 <?php
-class DB {
+class Database {
     private $host = "localhost";
-    private $dbname = "db_pweb1_bioviagens";
-    private $user = "root";
-    private $pass = "";
+    private $db_name = "db_pweb1_bioviagens";
+    private $username = "root";
+    private $password = "";
     public $conn;
 
     public function getConnection() {
         $this->conn = null;
         try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbname, $this->user, $this->pass);
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conn->exec("set names utf8");
         } catch(PDOException $exception) {
-            echo "Erro de conexão: " . $exception->getMessage();
+            echo "Erro na conexão com o banco de dados: " . $exception->getMessage();
         }
         return $this->conn;
     }
