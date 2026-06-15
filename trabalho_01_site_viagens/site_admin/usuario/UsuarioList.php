@@ -53,7 +53,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Telefone</th>
+                <th>Cargo</th>
+                <th>Contratação</th>
                 <th>E-mail</th>
                 <th>Login</th>
                 <th class="text-center">Ações</th>
@@ -65,7 +66,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <tr>
                         <td><?php echo $u['id']; ?></td>
                         <td><?php echo htmlspecialchars($u['nome']); ?></td>
-                        <td><?php echo htmlspecialchars($u['telefone']); ?></td>
+                        <td><?php echo htmlspecialchars($u['cargo'] ?? ''); ?></td>
+                        <td><?php echo $u['data_contratacao'] ? date('d/m/Y', strtotime($u['data_contratacao'])) : ''; ?></td>
                         <td><?php echo htmlspecialchars($u['email']); ?></td>
                         <td><?php echo htmlspecialchars($u['login']); ?></td>
                         <td class="text-center">
@@ -76,7 +78,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="6" class="text-center py-4">Nenhum usuário encontrado.</td>
+                    <td colspan="7" class="text-center py-4">Nenhum usuário encontrado.</td>
                 </tr>
             <?php endif; ?>
         </tbody>

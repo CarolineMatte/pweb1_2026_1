@@ -12,6 +12,8 @@ $telefone = '';
 $email = '';
 $login = '';
 $senha = '';
+$cargo = '';
+$data_contratacao = '';
 $mensagem = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -21,18 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $login = trim($_POST['login']);
     $senha = trim($_POST['senha']);
+    $cargo = trim($_POST['cargo']);
+    $data_contratacao = trim($_POST['data_contratacao']);
 
-    if (!empty($nome) && !empty($telefone) && !empty($email) && !empty($login) && (!empty($senha) || $id)) {
+    if (!empty($nome) && !empty($telefone) && !empty($email) && !empty($login) && !empty($cargo) && !empty($data_contratacao) && (!empty($senha) || $id)) {
         if ($id) {
             // Update
             if (!empty($senha)) {
-                $query = "UPDATE usuarios SET nome = :nome, telefone = :telefone, email = :email, login = :login, senha = :senha WHERE id = :id";
+                $query = "UPDATE usuarios SET nome = :nome, telefone = :telefone, email = :email, login = :login, senha = :senha, cargo = :cargo, data_contratacao = :data_contratacao WHERE id = :id";
             } else {
-                $query = "UPDATE usuarios SET nome = :nome, telefone = :telefone, email = :email, login = :login WHERE id = :id";
+                $query = "UPDATE usuarios SET nome = :nome, telefone = :telefone, email = :email, login = :login, cargo = :cargo, data_contratacao = :data_contratacao WHERE id = :id";
             }
         } else {
             // Insert
-            $query = "INSERT INTO usuarios (nome, telefone, email, login, senha) VALUES (:nome, :telefone, :email, :login, :senha)";
+            $query = "INSERT INTO usuarios (nome, telefone, email, login, senha, cargo, data_contratacao) VALUES (:nome, :telefone, :email, :login, :senha, :cargo, :data_contratacao)";
         }
 
         $stmt = $db->prepare($query);
@@ -40,6 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':telefone', $telefone);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':login', $login);
+        $stmt->bindParam(':cargo', $cargo);
+        $stmt->bindParam(':data_contratacao', $data_contratacao);
         if (!empty($senha) || !$id) {
             $stmt->bindParam(':senha', $senha);
         }
@@ -49,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         try {
             if ($stmt->execute()) {
-                $mensagem = "<div class='alert alert-success'>Usuário salvo com sucesso! <a href='UsuarioList.php'>Voltar à listagem</a></div>";
+                header("Location: UsuarioList.php");
+                exit;
             } else {
                 $mensagem = "<div class='alert alert-danger'>Erro ao salvar usuário.</div>";
             }
@@ -71,6 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $telefone = $usuario['telefone'];
         $email = $usuario['email'];
         $login = $usuario['login'];
+        $cargo = $usuario['cargo'];
+        $data_contratacao = $usuario['data_contratacao'];
     } else {
         $mensagem = "<div class='alert alert-danger'>Usuário não encontrado.</div>";
         $id = null;
@@ -113,6 +122,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-6">
                     <label for="senha" class="form-label">Senha <?php echo $id ? '(Deixe em branco para manter)' : '*'; ?></label>
                     <input type="password" class="form-control" id="senha" name="senha" <?php echo $id ? '' : 'required'; ?>>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="cargo" class="form-label">Cargo *</label>
+                    <select class="form-select" id="cargo" name="cargo" required>
+                        <option value="">Selecione...</option>
+                        <option value="Gerente" <?php echo $cargo === 'Gerente' ? 'selected' : ''; ?>>Gerente</option>
+                        <option value="Vendedor" <?php echo $cargo === 'Vendedor' ? 'selected' : ''; ?>>Vendedor</option>
+                        <option value="Suporte" <?php echo $cargo === 'Suporte' ? 'selected' : ''; ?>>Suporte</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="data_contratacao" class="form-label">Data de Contratação *</label>
+                    <input type="date" class="form-control" id="data_contratacao" name="data_contratacao" value="<?php echo htmlspecialchars($data_contratacao); ?>" required>
                 </div>
             </div>
 

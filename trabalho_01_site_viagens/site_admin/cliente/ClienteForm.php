@@ -50,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             try {
                 if ($stmt->execute()) {
-                    $mensagem = "<div class='alert alert-success'>Cliente salvo com sucesso! <a href='ClienteList.php'>Voltar à listagem</a></div>";
+                    header("Location: ClienteList.php");
+                    exit;
                 } else {
                     $mensagem = "<div class='alert alert-danger'>Erro ao salvar cliente.</div>";
                 }

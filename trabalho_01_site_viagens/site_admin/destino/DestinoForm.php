@@ -38,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         try {
             if ($stmt->execute()) {
-                $mensagem = "<div class='alert alert-success'>Destino salvo com sucesso! <a href='DestinoList.php'>Voltar à listagem</a></div>";
+                header("Location: DestinoList.php");
+                exit;
             } else {
                 $mensagem = "<div class='alert alert-danger'>Erro ao salvar destino.</div>";
             }

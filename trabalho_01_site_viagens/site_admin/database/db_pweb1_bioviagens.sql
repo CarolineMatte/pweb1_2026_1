@@ -7,10 +7,12 @@ CREATE TABLE usuarios (
     telefone VARCHAR(20) NOT NULL,
     email VARCHAR(100) NOT NULL,
     login VARCHAR(50) NOT NULL UNIQUE,
-    senha VARCHAR(255) NOT NULL
+    senha VARCHAR(255) NOT NULL,
+    cargo VARCHAR(100) NOT NULL,
+    data_contratacao DATE NOT NULL
 );
 
-INSERT INTO usuarios (nome, telefone, email, login, senha) VALUES ('Administrador', '(00) 00000-0000', 'admin@bioviagens.com', 'admin', '123');
+INSERT INTO usuarios (nome, telefone, email, login, senha, cargo, data_contratacao) VALUES ('Administrador', '(00) 00000-0000', 'admin@bioviagens.com', 'admin', '123', 'Gerente Geral', '2026-01-01');
 
 CREATE TABLE destinos (
     id INT AUTO_INCREMENT PRIMARY KEY,

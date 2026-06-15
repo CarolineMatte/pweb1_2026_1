@@ -8,15 +8,25 @@ $db = $database->getConnection();
 
 $busca = $_GET['busca'] ?? '';
 
+$mensagem_exclusao = '';
+
 // Exclusão
 if (isset($_GET['excluir_id'])) {
     $id_excluir = $_GET['excluir_id'];
     $stmt = $db->prepare("DELETE FROM destinos WHERE id = :id");
     $stmt->bindParam(':id', $id_excluir);
-    if ($stmt->execute()) {
-        echo "<div class='alert alert-success'>Destino excluído com sucesso!</div>";
-    } else {
-        echo "<div class='alert alert-danger'>Erro ao excluir destino.</div>";
+    try {
+        if ($stmt->execute()) {
+            $mensagem_exclusao = "<div class='alert alert-success'>Destino excluído com sucesso!</div>";
+        } else {
+            $mensagem_exclusao = "<div class='alert alert-danger'>Erro ao excluir destino.</div>";
+        }
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) {
+            $mensagem_exclusao = "<div class='alert alert-warning'>Exclusão bloqueada: existem reservas vinculadas a este destino. Apague as reservas primeiro.</div>";
+        } else {
+            $mensagem_exclusao = "<div class='alert alert-danger'>Erro no banco de dados: " . $e->getMessage() . "</div>";
+        }
     }
 }
 
@@ -40,6 +50,7 @@ $destinos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <form method="GET" action="DestinoList.php" class="mb-4">
+    <?php if (!empty($mensagem_exclusao)) echo $mensagem_exclusao; ?>
     <div class="input-group">
         <input type="text" name="busca" class="form-control" placeholder="Buscar por cidade, país ou tipo de voo..." value="<?php echo htmlspecialchars($busca); ?>">
         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Buscar</button>
